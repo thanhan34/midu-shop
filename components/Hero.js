@@ -45,7 +45,7 @@ function Hero() {
                                 aria-hidden="true"
                                 className="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full "
                             >
-                                <div className="transform lg:absolute sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8 md:rotate-6">
+                                <div className={`transform lg:absolute sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8 ${isChangeHero ? "md:rotate-6" : "md:-rotate-6"} `}>
                                     <div className="flex flex-col items-center space-x-6 space-y-6 xl:flex-row lg:space-x-8">
                                         <div className="flex gap-x-4 xl:grid xl:flex-shrink-0 xl:grid-cols-1 gap-y-6 lg:gap-y-8">
                                             <HeroImage img={images[0]} />
