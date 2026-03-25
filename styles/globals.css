@@ -1,3 +1,290 @@
+/* ── Google Fonts: Cormorant Garamond (luxury serif) + DM Sans (clean body) ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ═══════════════════════════════════════════════
+   LUXURY DESIGN SYSTEM — LALLA
+   Palette: Soft warm white + Pastel orange
+═══════════════════════════════════════════════ */
+
+:root {
+  /* Backgrounds */
+  --bg-page:   #FFFCF8;
+  --bg-warm:   #F8F1EB;
+  --bg-blush:  #F6E7DD;
+
+  /* Accent (Pastel Orange) */
+  --accent:       #EFA67A;
+  --accent-light: #F3B490;
+  --accent-deep:  #E39B74;
+
+  /* Text */
+  --text-primary:   #1F1A17;
+  --text-secondary: #5E5148;
+  --text-muted:     #8B7D74;
+
+  /* Border */
+  --border: #EADDD3;
+}
+
+/* ── Base ─────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  ::selection {
+    background: #EFA67A40;
+    color: #1F1A17;
+  }
+}
+
+/* ── Component Layer ──────────────────────────── */
+@layer components {
+
+  /* ━━━ LAYOUT ━━━ */
+  .page-container {
+    @apply max-w-[1320px] mx-auto px-5 md:px-10 lg:px-16;
+  }
+
+  .section-pad {
+    @apply py-20 md:py-28;
+  }
+
+  /* ━━━ TYPOGRAPHY ━━━ */
+  .section-label {
+    @apply inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.25em] text-[#8B7D74];
+  }
+
+  .section-label::before {
+    content: '';
+    @apply block w-6 h-px bg-[#EFA67A];
+  }
+
+  /* ━━━ BUTTONS ━━━ */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-3.5 rounded-full
+           bg-[#EFA67A] text-white text-sm font-medium tracking-wide
+           transition-all duration-300
+           hover:bg-[#E39B74] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(239,166,122,0.35)]
+           active:translate-y-0
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EFA67A]/50;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-3.5 rounded-full
+           border border-[#1F1A17] text-[#1F1A17] text-sm font-medium tracking-wide
+           transition-all duration-300
+           hover:bg-[#1F1A17] hover:text-white hover:-translate-y-0.5
+           active:translate-y-0
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1F1A17]/20;
+  }
+
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-3.5 rounded-full
+           bg-[#F6E7DD] text-[#5E5148] text-sm font-medium tracking-wide
+           transition-all duration-300
+           hover:bg-[#EFA67A] hover:text-white hover:-translate-y-0.5
+           active:translate-y-0
+           focus-visible:outline-none;
+  }
+
+  .btn-text {
+    @apply inline-flex items-center gap-2
+           text-[#1F1A17] text-sm font-medium tracking-wide
+           border-b border-[#1F1A17]/30
+           transition-all duration-200
+           hover:border-[#EFA67A] hover:text-[#E39B74];
+  }
+
+  /* Legacy compatibility aliases */
+  .btn-accent { @apply btn-primary; }
+  .btn-ghost  { @apply btn-outline; }
+
+  /* ━━━ INPUTS ━━━ */
+  .input-luxury {
+    @apply w-full px-4 py-3
+           bg-white border border-[#EADDD3]
+           text-[#1F1A17] text-sm font-light
+           placeholder:text-[#8B7D74]
+           rounded-xl outline-none
+           transition-all duration-200
+           focus:border-[#EFA67A] focus:ring-2 focus:ring-[#EFA67A]/10;
+  }
+
+  .input-glass { @apply input-luxury; }
+
+  /* ━━━ CARD / SURFACE ━━━ */
+  .card-surface {
+    @apply bg-white border border-[#EADDD3]
+           rounded-2xl
+           shadow-[0_2px_20px_rgba(31,26,23,0.05)];
+  }
+
+  .card-hover {
+    @apply transition-all duration-300
+           hover:shadow-[0_8px_36px_rgba(31,26,23,0.09)]
+           hover:-translate-y-0.5;
+  }
+
+  /* Legacy glass compatibility */
+  .glass       { @apply card-surface; }
+  .glass-hover { @apply card-hover; }
+  .glass-strong {
+    @apply bg-white border border-[#EADDD3]
+           rounded-2xl
+           shadow-[0_4px_28px_rgba(31,26,23,0.07)];
+  }
+
+  /* ━━━ PRODUCT CARD ━━━ */
+  .product-card {
+    @apply bg-transparent overflow-hidden group cursor-pointer;
+  }
+
+  .product-card-img {
+    @apply relative aspect-[3/4] overflow-hidden bg-[#F8F1EB] rounded-xl;
+  }
+
+  .product-card-img img {
+    @apply w-full h-full object-cover object-center
+           transition-transform duration-700
+           group-hover:scale-105;
+  }
+
+  .product-card-info {
+    @apply pt-4;
+  }
+
+  /* ━━━ TAGS / BADGES ━━━ */
+  .tag {
+    @apply inline-flex items-center
+           px-2.5 py-1
+           text-[10px] font-medium uppercase tracking-[0.14em]
+           rounded-full;
+  }
+
+  .tag-warm   { @apply tag bg-[#F6E7DD] text-[#8B7D74]; }
+  .tag-accent { @apply tag text-[#E39B74]; background-color: rgba(239,166,122,0.15); }
+  .tag-new    { @apply tag bg-[#1F1A17] text-white; }
+
+  /* Legacy badge compatibility */
+  .badge        { @apply tag; }
+  .badge-accent { @apply tag text-[#E39B74]; background-color: rgba(239,166,122,0.15); }
+  .badge-red    { @apply tag bg-red-50 text-red-400; }
+  .badge-green  { @apply tag bg-emerald-50 text-emerald-600; }
+  .badge-white  { @apply tag bg-white text-[#5E5148] shadow-sm; }
+
+  /* ━━━ DIVIDER ━━━ */
+  .accent-line {
+    @apply w-10 h-px bg-[#EFA67A];
+  }
+
+  /* ━━━ PAGE WRAPPER ━━━ */
+  .dark-page {
+    @apply min-h-screen bg-[#FFFCF8];
+  }
+
+  /* ━━━ TEXT UTILITIES ━━━ */
+  .text-primary   { @apply text-[#1F1A17]; }
+  .text-secondary { @apply text-[#5E5148]; }
+  .text-muted     { @apply text-[#8B7D74]; }
+
+  /* ━━━ STARS ━━━ */
+  .star-filled { @apply text-[#EFA67A]; }
+  .star-empty  { @apply text-[#EADDD3]; }
+
+  /* ━━━ HEADER ━━━ */
+  .glass-header {
+    @apply bg-[#FFFCF8]/95 border-b border-[#EADDD3]/60;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .shadow-header {
+    box-shadow: 0 2px 20px rgba(31, 26, 23, 0.06);
+  }
+
+  /* ━━━ ANIMATIONS ━━━ */
+  .animate-fade-in {
+    animation: lux-fadeIn 0.5s ease-out both;
+  }
+
+  .animate-slide-up {
+    animation: lux-slideUp 0.6s ease-out both;
+  }
+
+  @keyframes lux-fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes lux-slideUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ━━━ SCROLLBAR ━━━ */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ━━━ PRODUCT PAGE — extra precision ━━━ */
+
+  /* Sticky gallery column height guard */
+  .lg\:sticky { position: sticky; }
+
+  /* Accordion body smooth transition */
+  .accordion-body {
+    transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity    0.28s ease;
+  }
+
+  /* Size chip — selected micro-dot pulse */
+  @keyframes dotPop {
+    0%   { transform: translateX(-50%) scale(0); opacity: 0; }
+    60%  { transform: translateX(-50%) scale(1.4); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  }
+
+  .size-dot-enter {
+    animation: dotPop 0.22s ease-out both;
+  }
+
+  /* Product info column — clean left border rhythm on desktop */
+  .product-info-col {
+    @apply border-l-0 lg:border-l lg:border-[#EADDD3] lg:pl-10 xl:pl-16;
+  }
+
+  /* Thin section ornament line (reusable) */
+  .ornament-line {
+    @apply w-10 h-px bg-[#EFA67A] inline-block;
+  }
+}

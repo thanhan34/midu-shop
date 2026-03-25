@@ -1,29 +1,85 @@
+import Link from 'next/link';
 
-function Banner() {
-    return (
-        <div className="container flex flex-col items-center justify-center px-6 py-12 mx-auto xl:px-0">
-            <div className="flex flex-row items-stretch justify-between bg-gray-50">
-                <div className="flex items-center justify-center bg-gray-800">
-                    <p className="flex flex-shrink-0 text-2xl font-semibold leading-normal tracking-wide text-white transform -rotate-90">50% OFF</p>
-                </div>
-                <div className="flex flex-col items-start justify-center px-6 py-5 xl:w-2/5 md:w-5/12 xl:px-7 md:px-0 md:py-0">
-                    <div>
-                        <p className="text-3xl font-semibold leading-9 text-gray-800 xl:text-4xl">Act before it’s too late! <br /> GET UP TO 50% OFF NOW</p>
-                    </div>
-                    <div className="mt-2 xl:mt-4">
-                        <p className="pr-4 text-base leading-7 text-gray-600 xl:text-xl">The greatest selection of sale piecies from the world's best designers. Avail the 50% offer now.</p>
-                    </div>
-                </div>
-                <div className="hidden md:block h-44 md:h-80 xl:h-96">
-                    <img className="hidden h-full xl:block" src="/banner.jpg" alt="pexels-dmitry-zvolskiy-2082090-1" />
-                    <img className="h-full xl:hidden" src="/banner.jpg" alt="pexels-dmitry-zvolskiy-2082090-1-1" />
-                </div>
+export default function Banner() {
+  return (
+    <section className="bg-[#F6E7DD] py-20 md:py-24 overflow-hidden">
+      <div className="max-w-[1320px] mx-auto px-5 md:px-10 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          {/* ── Image ── */}
+          <div className="relative order-2 lg:order-1">
+            <div
+              className="overflow-hidden rounded-2xl bg-[#F8F1EB]"
+              style={{ aspectRatio: '4/3' }}
+            >
+              <img
+                src="/banner.jpg"
+                alt="Selected Pieces — Seasonal Offer"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="w-full mt-6 md:hidden">
-                <img src="/banner.jpg" alt="pexels-dmitry-zvolskiy-2082090-1" className="w-full" />
+
+            {/* Floating offer pill */}
+            <div className="absolute top-5 left-5 bg-[#FFFCF8] border border-[#EADDD3] rounded-full px-5 py-2.5 shadow-soft flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#EFA67A] flex-shrink-0" />
+              <span className="text-[11px] uppercase tracking-[0.18em] text-[#5E5148] font-medium">
+                Private Sale
+              </span>
             </div>
+          </div>
+
+          {/* ── Text ── */}
+          <div className="order-1 lg:order-2 flex flex-col gap-6">
+            {/* Label */}
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-px bg-[#EFA67A]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-[#8B7D74]">
+                Seasonal Edit
+              </span>
+            </div>
+
+            <h2
+              className="font-serif font-light text-[#1F1A17] leading-[1.1]"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}
+            >
+              Selected Pieces,
+              <br />
+              <em className="italic text-[#EFA67A]">thoughtfully</em>
+              <br />
+              reduced.
+            </h2>
+
+            <div className="w-10 h-px bg-[#EADDD3]" />
+
+            <p className="text-[#5E5148] text-[15px] font-light leading-relaxed max-w-sm">
+              A curated selection of past-season pieces, now available at considerate prices. 
+              Each item chosen because it remains as beautiful today as the day it was designed.
+            </p>
+
+            {/* Offer details — subtle */}
+            <div className="flex items-center gap-6 py-5 border-y border-[#EADDD3]">
+              {[
+                { value: 'Up to 30%', label: 'Off selected styles' },
+                { value: 'Free', label: 'Shipping on all orders' },
+              ].map((item) => (
+                <div key={item.label}>
+                  <p className="font-serif text-xl text-[#1F1A17] font-light">{item.value}</p>
+                  <p className="text-[11px] uppercase tracking-[0.14em] text-[#8B7D74] mt-0.5">{item.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <Link href="/shop?sort=price-asc">
+                <a className="btn-primary">
+                  Shop the Edit
+                </a>
+              </Link>
+            </div>
+          </div>
+
         </div>
-    )
+      </div>
+    </section>
+  );
 }
-
-export default Banner

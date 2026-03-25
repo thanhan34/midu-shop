@@ -1,273 +1,71 @@
-import React, { useState } from "react";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
-function Carousels() {
-    return (
-        <div className="container mx-auto">
-            <div className="py-6 mt-32 text-center bg-gray-50 lg:py-10 md:py-8">
-                <p className="w-10/12 mx-auto text-3xl font-semibold leading-9 text-center text-gray-800 md:w-full lg:text-4xl lg:leading-9 md:leading-7">New Arrivals</p>
-                <p className="mt-4 text-xl font-semibold leading-5 text-gray-800">Stay ahead of the style curve with our latest arrivals</p>
+import Link from 'next/link';
+
+const categories = [
+  { src: '/C1.jpg',  label: 'Dresses',    slug: 'Dresses' },
+  { src: '/C2.jpg',  label: 'Tops',       slug: 'Tops' },
+  { src: '/C3.jpg',  label: 'Bottoms',    slug: 'Bottoms' },
+  { src: '/C4.jpg',  label: 'Outerwear',  slug: 'Jackets' },
+  { src: '/C5.jpg',  label: 'Accessories',slug: 'Accessories' },
+  { src: '/C6.jpg',  label: 'Bags',       slug: 'Bags' },
+];
+
+export default function Carousels() {
+  return (
+    <section className="bg-[#FFFCF8] py-20 md:py-28">
+      <div className="max-w-[1320px] mx-auto px-5 md:px-10 lg:px-16">
+
+        {/* ── Header ── */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-8 h-px bg-[#EFA67A]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-[#8B7D74]">
+                Explore
+              </span>
             </div>
-            <div className="flex items-center justify-center w-full h-full px-4 py-24 sm:py-8">
-                {/* Carousel for desktop and large size devices */}
-                <CarouselProvider className="hidden lg:block"
-                    naturalSlideWidth={100}
-                    isIntrinsicHeight={true}
-                    totalSlides={12}
-                    visibleSlides={4}
-                    isPlaying={true}
-                    step={1}
-                    infinite={true}>
-                    <div className="relative flex items-center justify-center w-full">
-                        <ButtonBack role="button" aria-label="slide backward" className="absolute left-0 z-30 ml-8 cursor-pointer focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="prev">
-                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 1L1 7L7 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </ButtonBack>
-                        <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
-                            <Slider>
-                                <div id="slider" className="flex items-center justify-start h-full transition duration-700 ease-out lg:gap-8 md:gap-6 gap-14">
-                                    <Slide index={0}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C1.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={1}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C2.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={2}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C3.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={3}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C4.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={4}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C5.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={5}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C6.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={6}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C7.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={7}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C8.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={8}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C9.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
+            <h2
+              className="font-serif font-light text-[#1F1A17] leading-[1.1]"
+              style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)' }}
+            >
+              Shop by Category
+            </h2>
+          </div>
 
-                                        </div>
-                                    </Slide>
-                                    <Slide index={9}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C10.jpg" alt="sitting area" className="object-cover object-center w-full" />
-
-                                        </div>
-                                    </Slide>
-                                    <Slide index={10}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C11.jpg" alt="sitting area" className="object-cover object-center w-full" />
-
-                                        </div>
-                                    </Slide>
-                                    <Slide index={11}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C12.jpg" alt="sitting area" className="object-cover object-center w-full" />
-
-                                        </div>
-                                    </Slide>
-                                </div>
-                            </Slider>
-                        </div>
-                        <ButtonNext role="button" aria-label="slide forward" className="absolute right-0 z-30 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
-                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L1 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </ButtonNext>
-                    </div>
-                </CarouselProvider>
-
-                {/* Carousel for tablet and medium size devices */}
-                <CarouselProvider className="hidden lg:hidden md:block" isPlaying={true} naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={12} visibleSlides={2} step={1} infinite={true}>
-                    <div className="relative flex items-center justify-center w-full">
-                        <ButtonBack role="button" aria-label="slide backward" className="absolute left-0 z-30 ml-8 cursor-pointer focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="prev">
-                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 1L1 7L7 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </ButtonBack>
-                        <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
-                            <Slider>
-                                <div id="slider" className="flex items-center justify-start h-full transition duration-700 ease-out lg:gap-8 md:gap-6 gap-14">
-                                    <Slide index={0}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C1.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={1}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C2.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={2}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C3.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={3}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C4.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={4}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C5.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={5}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C6.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={6}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C7.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={7}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C8.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={8}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C9.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={9}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C10.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={10}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C11.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={11}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C12.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                </div>
-                            </Slider>
-                        </div>
-                        <ButtonNext role="button" aria-label="slide forward" className="absolute right-0 z-30 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
-                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L1 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </ButtonNext>
-                    </div>
-                </CarouselProvider>
-
-                {/* Carousel for mobile and Small size Devices */}
-                <CarouselProvider className="block md:hidden " isPlaying={true} naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={12} visibleSlides={1} step={1} infinite={true}>
-                    <div className="relative flex items-center justify-center w-full">
-                        <ButtonBack role="button" aria-label="slide backward" className="absolute left-0 z-30 ml-8 cursor-pointer focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="prev">
-                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 1L1 7L7 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </ButtonBack>
-                        <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
-                            <Slider>
-                                <div id="slider" className="flex items-center justify-start w-full h-full transition duration-700 ease-out lg:gap-8 md:gap-6">
-                                    <Slide index={0}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C1.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={1}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C2.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={2}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C3.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={3}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C4.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={4}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C5.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={5}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C6.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={6}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C7.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={7}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C8.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={8}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C9.jpg" alt="black chair and white table" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={9}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C10.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={10}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C11.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                    <Slide index={11}>
-                                        <div className="relative flex flex-shrink-0 w-full sm:w-auto">
-                                            <img src="/C12.jpg" alt="sitting area" className="object-cover object-center w-full" />
-                                        </div>
-                                    </Slide>
-                                </div>
-                            </Slider>
-                        </div>
-                        <ButtonNext role="button" aria-label="slide forward" className="absolute right-0 z-30 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
-                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L1 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </ButtonNext>
-                    </div>
-                </CarouselProvider>
-            </div>
+          <Link href="/shop">
+            <a className="btn-text self-start sm:self-auto pb-0.5">
+              All Categories
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </Link>
         </div>
-    )
-}
 
-export default Carousels
+        {/* ── Category Grid — 6 items ── */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-5">
+          {categories.map((cat) => (
+            <Link key={cat.label} href={`/shop?category=${encodeURIComponent(cat.slug)}`}>
+              <a className="group block">
+                <div
+                  className="relative overflow-hidden rounded-xl bg-[#F8F1EB] mb-3"
+                  style={{ aspectRatio: '3/4' }}
+                >
+                  <img
+                    src={cat.src}
+                    alt={cat.label}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1F1A17]/30 via-transparent to-transparent" />
+                </div>
+                <p className="text-[#1F1A17] text-[13px] font-light tracking-wide text-center group-hover:text-[#EFA67A] transition-colors duration-200">
+                  {cat.label}
+                </p>
+              </a>
+            </Link>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
